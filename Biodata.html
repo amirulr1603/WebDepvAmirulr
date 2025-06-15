@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Biodata</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f8fa;
+            margin: 0;
+            padding: 0;
+        }
+        .myDiv {
+            border: 5px double rgb(64, 78, 100);
+            background-color: rgba(181, 215, 250, 0.684);    
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: 0;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 2px 12px rgba(64, 78, 100, 0.09);
+        }
+        h1 {
+            margin: 0 0 24px 0;
+            font-size: 1.2rem;
+            letter-spacing: 1.5px;
+        }
+        table {
+            border-collapse: separate;
+            width: 100%;
+            margin-top: 8px;
+            margin-bottom: 32px;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+            border-radius: 90px;
+            border-bottom: 1px solid #ffffff;
+            border-style: outset;
+            border-color: #005e8dc3;
+        }
+        tr:hover {background-color: #fffdb0;}
+        tr:nth-child(even) {
+            background-color: #bff3fb;
+        }
+        /* Tab buttons */
+        .tablink {
+            background-color: #555;
+            color: white;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            font-size: 17px;
+            width: 25%;
+            transition: transform 0.18s cubic-bezier(.4,2,.3,.8), box-shadow 0.18s, filter 0.16s;
+        }
+        .tablink:hover {
+            background-color: #777;
+            transform: scale(1.06) translateY(-4px);
+            box-shadow: 0 2px 12px #aaa;
+        }
+        .tabcontent {
+            color: white;
+            display: none;
+            padding: 50px;
+            text-align: center;
+        }
+        #Tomyam {background-image: url('https://resepichenom.com/images/recipes/Tomyam_Ayam_.jpg');}
+        #SambalPetai {background-image: url('https://resepichenom.com/images/recipes/917B9F3E-4E5C-4CB2-9474-344D1573A6C2.jpeg');}
+        #Lasagna {background-image: url('https://www.archanaskitchen.com/images/archanaskitchen/World_Pastas_Pizzas/garfield_lasagne_recipe_with_minced_meat_and_italian_spices_400.jpg');}
+        #NasiKerabu {background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjB1TuzTfEn6sx3Tkm9FMq5_ijAcp15VA3dbOvddqHpgFrFUJxTjtKwG6nCrYl-2jgVMDrgqZE9kQY1e0_uPbP0KZ_tdpd9yZDk1rqsijj7kMcGFV6AHQfm9j3dL12v_-LD25Yu/s1600/DSC_0576-a.JPG');}
+        .column {
+            float: left;
+            width: 30%;
+            padding: 15px;
+            transition: transform 0.22s cubic-bezier(.4,2,.3,.8), box-shadow 0.22s, filter 0.17s;
+            border-radius: 18px;
+            margin: 0 1.5% 20px 1.5%;
+            background: #f9fafb;
+            text-align: center;
+            box-shadow: 0 2px 8px #e0e5ed;
+            cursor: pointer;
+            position: relative;
+        }
+        .column:hover, .column:focus-within {
+            animation: vibrate 0.22s linear 1, popUp 0.22s linear 1;
+            transform: scale(1.06) translateY(-6px) rotate(-1.5deg);
+            box-shadow: 0 8px 24px #a4c1e6;
+            filter: brightness(1.05);
+            z-index: 2;
+            background: #f1f7fc;
+        }
+        @keyframes vibrate {
+            0% { transform: scale(1) translateY(0);}
+            20% { transform: scale(1.03) translateY(-1px) rotate(-0.5deg);}
+            40% { transform: scale(1.06) translateY(-2px) rotate(1.5deg);}
+            60% { transform: scale(1.04) translateY(-4px) rotate(-1.5deg);}
+            80% { transform: scale(1.07) translateY(-5px) rotate(1deg);}
+            100% { transform: scale(1.06) translateY(-6px) rotate(-1.5deg);}
+        }
+        @keyframes popUp {
+            0% { box-shadow: 0 2px 8px #e0e5ed;}
+            100% { box-shadow: 0 8px 24px #a4c1e6;}
+        }
+        .row::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .add-section-btn {
+            display: block;
+            margin: 0 auto 36px auto;
+            background: #3377c9;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 26px;
+            font-size: 1.12rem;
+            cursor: pointer;
+            box-shadow: 0 2px 8px #b9d9f7;
+            transition: background 0.2s, box-shadow 0.18s;
+            font-weight: 600;
+        }
+        .add-section-btn:hover {
+            background: #1b4c8b;
+            box-shadow: 0 4px 18px #b9d9f7;
+        }
+        /* Popup styles */
+        .popup-bg {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.45);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+        }
+        .popup-bg.active {
+            display: flex;
+        }
+        .popup-form {
+            background: #fff;
+            border-radius: 14px;
+            padding: 26px 30px 22px 30px;
+            box-shadow: 0 8px 32px rgba(64,78,100,0.14);
+            min-width: 300px;
+            max-width: 95vw;
+            text-align: center;
+            position: relative;
+            animation: fadeInPopup 0.25s;
+        }
+        @keyframes fadeInPopup {
+            from { opacity: 0; transform: scale(0.9);}
+            to { opacity: 1; transform: scale(1);}
+        }
+        .popup-form input, .popup-form textarea {
+            width: 98%;
+            margin-bottom: 12px;
+            padding: 8px 6px;
+            border: 1.5px solid #8eb6e2;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #f5f8fa;
+        }
+        .popup-form button {
+            background: #3377c9;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 9px 22px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+        .popup-form button:hover {
+            background: #285a95;
+        }
+        .close-popup-btn {
+            position: absolute;
+            right: 16px;
+            top: 10px;
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: #237;
+            cursor: pointer;
+        }
+        .delete-btn {
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 4px 13px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 8px 0 6px 0;
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            transition: background 0.17s;
+        }
+        .delete-btn:hover {
+            background: #c0392b;
+        }
+        @media (max-width: 900px) {
+            .column { width: 95%; margin: 0 2% 20px 2%; }
+        }
+        @media (max-width: 600px) {
+            .column { width: 99%; min-height: 110px; }
+            .myDiv { font-size: 1rem; padding: 10px 2px;}
+        } 
+        a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+    </style>
+</head>
+<body>
+    <div class="myDiv">
+      <h2>My Biodata</h2>
+      <p><i>Look below to see my biodata details</i>.</p>
+    </div>
+
+    <h1><center> >>>>>>>>>>>>>>>>>>>> About Amirul >>>>>>>>>>>>>>>>>>>>>> </center></h1>
+
+    <div> 
+        <table style="width:100%">
+          <tr>
+            <th>Biodata</th>
+            <th>Details</th> 
+          </tr>
+          <tr>
+            <td><i>Name</i></td>
+            <td>Mohamad Amirul Bin Ramli</td>
+          </tr>
+          <tr>
+            <td><i>Id Student</i></td>
+            <td>2023509799</td>
+          </tr>
+          <tr>
+            <td><i>Class</i></td>
+            <td>JCDIM1105A</td>
+          </tr>
+          <tr>
+            <td><i>Date of Birth</i></td>
+            <td>16 January 2003</td>
+          </tr>
+          <tr>
+            <td><i>Place of Birth</i></td>
+            <td>Hospital Mentakab,Pahang</td>
+          </tr>
+          <tr>
+            <td><i>Religion</i></td>
+            <td>Islam</td>
+          </tr>
+          <tr>
+            <td><i>Address</i></td>
+            <td>Segamat,Johor</td>
+          </tr>
+          <tr>
+            <td><i>Contact</i></td>
+            <td>0136795117</td>
+          </tr>
+          <tr>
+            <td><i>Email</i></td>
+            <td>2023509799@student.uitm.edu.my</td>
+          </tr>
+        </table>
+    </div>
+
+    <br>
+    <center><h1 style="font-size:150%;">My Favourite Food</h1></center>
+    
+    <div id="Tomyam" class="tabcontent">
+      <h1>Tomyam</h1>
+      <p>A popular Thai spicy and sour soup.</p>
+    </div>
+    <div id="SambalPetai" class="tabcontent">
+      <h1>Sambal Petai</h1>
+      <p>A Malaysian spicy stink beans food with bitter umami taste.</p>
+    </div>
+    <div id="Lasagna" class="tabcontent">
+      <h1>Lasagna</h1>
+      <p>an Italian dish consisting of lasagne baked with meat or vegetables and a cheese sauce.</p>
+    </div>
+    <div id="NasiKerabu" class="tabcontent">
+      <h1>Nasi Kerabu</h1>
+      <p>Malaysian rice dish, a type of nasi ulam, in which blue-colored rice is eaten with dried fish or fried chicken, crackers and other salads.</p>
+    </div>
+    <button class="tablink" onclick="openCity('Tomyam', this, 'red')" id="defaultOpen">Tomyam</button>
+    <button class="tablink" onclick="openCity('SambalPetai', this, 'green')">Sambal Petai</button>
+    <button class="tablink" onclick="openCity('Lasagna', this, 'blue')">Lasagna</button>
+    <button class="tablink" onclick="openCity('NasiKerabu', this, 'orange')">Nasi Kerabu</button>
+
+    <script>
+    function openCity(foodName,elmnt,color) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+      }
+      document.getElementById(foodName).style.display = "block";
+      elmnt.style.backgroundColor = color;
+    }
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+    </script>
+
+    <br><br><br><br><br>
+    <center><h2 style="color:rgb(18, 18, 18);background-color: rgb(87, 97, 206);" class="city main,">Amirul Best Pick Drinks</h2></center>
+    <div class="row" id="drinkRow">
+      <div class="column" tabindex="0">
+        <button class="delete-btn" onclick="deleteColumn(this)">Delete</button>
+        <h2>Iced Lemon Tea</h2>
+        <p>a simple, refreshing drink that combines brewed tea with fresh citrus and a touch of sweetness.</p>
+        <img src="https://thumbs.dreamstime.com/b/glass-iced-lemon-tea-white-background-42435422.jpg" alt="Iced Lemon Tea" style="width:104px;height:142px;">
+      </div>
+      <div class="column" tabindex="0">
+        <button class="delete-btn" onclick="deleteColumn(this)">Delete</button>
+        <h2>Sirap Bandung</h2>
+        <p>iced bandung or rose syrup drink is a drink popular in South East Asia. It consists of evaporated milk or condensed milk flavoured with rose syrup (rose cordial), giving it a pink colour.</p>
+        <img src="https://qbistro.com/wp-content/uploads/2024/01/47.jpg" alt="Sirap Bandung" style="width:200px;height:200px;">
+      </div>
+      <div class="column" tabindex="0">
+        <button class="delete-btn" onclick="deleteColumn(this)">Delete</button>
+        <h2>F&N Ice Cream Soda</h2>
+        <p>a sparkling flavoured drink which has been loved by all for generations. The fizzy refreshing drink has a hint of creamy vanilla, similar to that of a float.</p>
+        <img src="https://my.fnlife.com/pub/media/catalog/product/cache/1270337d5bbd2f34cfe21e58bb4c921d/_/f/_f___f_n-ice-cream-soda-325ml-x-12-cans_02.jpg" alt="F&N Ice Cream Soda" style="width:200px;height:142px;">
+      </div>
+    </div>
+    <button class="add-section-btn" id="addDrinkBtn">+ Add More Drink</button>
+    <!-- Popup for adding new drink section -->
+    <div class="popup-bg" id="popupBg">
+        <form class="popup-form" id="popupForm">
+            <button class="close-popup-btn" type="button" id="closePopupBtn" aria-label="Close">&times;</button>
+            <h2>Add Drink</h2>
+            <input type="text" id="inputTitle" placeholder="Drink Name" required />
+            <textarea id="inputDesc" placeholder="Drink Description" rows="2" required></textarea>
+            <input type="url" id="inputImg" placeholder="Image URL (https://...)" required />
+            <button type="submit">Add Drink</button>
+        </form>
+    </div>
+    <script>
+        // Add Drink Popup Logic
+        const addBtn = document.getElementById('addDrinkBtn');
+        const popupBg = document.getElementById('popupBg');
+        const closePopupBtn = document.getElementById('closePopupBtn');
+        const popupForm = document.getElementById('popupForm');
+        const drinkRow = document.getElementById('drinkRow');
+
+        addBtn.addEventListener('click', () => {
+            popupBg.classList.add('active');
+            document.getElementById('inputTitle').focus();
+        });
+        closePopupBtn.addEventListener('click', () => {
+            popupBg.classList.remove('active');
+            popupForm.reset();
+        });
+        popupBg.addEventListener('click', (e) => {
+            if (e.target === popupBg) {
+                popupBg.classList.remove('active');
+                popupForm.reset();
+            }
+        });
+        popupForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const title = document.getElementById('inputTitle').value.trim();
+            const desc = document.getElementById('inputDesc').value.trim();
+            const img = document.getElementById('inputImg').value.trim();
+
+            if(title && desc && img) {
+                const col = document.createElement('div');
+                col.className = 'column';
+                col.setAttribute('tabindex', '0');
+                col.innerHTML = `
+                    <button class="delete-btn" onclick="deleteColumn(this)">Delete</button>
+                    <h2>${title}</h2>
+                    <p>${desc}</p>
+                    <img src="${img}" alt="${title}" style="width:200px;max-width:100%;height:142px;">
+                `;
+                drinkRow.appendChild(col);
+                col.style.opacity = 0;
+                setTimeout(() => { col.style.opacity = 1; }, 50);
+                popupBg.classList.remove('active');
+                popupForm.reset();
+            }
+        });
+        document.addEventListener('keydown', function(e) {
+            if (popupBg.classList.contains('active') && e.key === 'Escape') {
+                popupBg.classList.remove('active');
+                popupForm.reset();
+            }
+        });
+        // Delete column action
+        window.deleteColumn = function(btn) {
+            if (confirm("Delete this drink?")) {
+                const col = btn.closest('.column');
+                col.parentNode.removeChild(col);
+            }
+        }
+    </script> 
+
+
+<a href="C:\Users\Amirul\Desktop\IMD318 Assignnotes\HTML Assignment 1\index.html" class="previous">&laquo; Back to Home</a>
+
+
+</body>
+</html>

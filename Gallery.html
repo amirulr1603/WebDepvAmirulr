@@ -1,0 +1,351 @@
+<!DOCTYPE html> 
+<html> 
+<title>Gallery</title> 
+<head>
+    <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <style>  
+     body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f8fa;
+            margin: 0;
+            padding: 0;
+        }
+        .myDiv {
+            border: 5px double rgb(64, 78, 100);
+            background-color: rgba(93, 61, 221, 0.726);    
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: 0;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 2px 12px rgba(64, 78, 100, 0.09);
+        }
+        h1 {
+            margin: 0 0 24px 0;
+            font-size: 1.2rem;
+            letter-spacing: 1.5px;
+        } 
+
+        body {
+  font-family: Arial;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  vertical-align: middle;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+} 
+
+div.scroll-container {
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+div.scroll-container img {
+  padding: 10px;
+} 
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 1px;
+  width: 650px;
+}
+
+img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+        </style> 
+</head>
+<body>
+     <div class="myDiv">
+        <h2>My Gallery</h2>
+        <p><i>Look below to see my Gallery details</i>.</p> 
+    </div>
+
+    <h1><center> >>>>>>>>>>>>>>>>>>>> About Gallery >>>>>>>>>>>>>>>>>>>>>> </center></h1> 
+
+<center><h2 style="color:rgb(18, 18, 18);background-color: rgb(168, 175, 254);" class="city main,">Amirul Favourite Photos</h2></center>
+
+<h2 style="text-align:center">Slideshow Gallery</h2>
+<h2 style="text-align:center">Sunset</h2>
+
+
+
+<div class="container">
+  <div class="mySlides">
+    <div class="numbertext">1 / 6</div>
+    <img src="Photo 11.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">2 / 6</div>
+    <img src="Photo 12.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">3 / 6</div>
+    <img src="Photo 13.jpg" style="width:100%">
+  </div>
+    
+  <div class="mySlides">
+    <div class="numbertext">4 / 6</div>
+    <img src="Photo 14.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">5 / 6</div>
+    <img src="Photo 15.jpg" style="width:100%">
+  </div> 
+
+  <div class="mySlides">
+    <div class="numbertext">6 / 6</div>
+    <img src="Photo 16.jpg" style="width:100%">
+  </div>
+    
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <div class="row">
+    <div class="column">
+      <img class="demo cursor" src="Photo 11.jpg" style="width:100%" onclick="currentSlide(1)" alt="Sunset on Beach">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="Photo 12.jpg" style="width:100%" onclick="currentSlide(2)" alt="Sunset on Beach pt 2">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="Photo 13.jpg" style="width:100%" onclick="currentSlide(3)" alt="Sunset on Road">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="Photo 14.jpg" style="width:100%" onclick="currentSlide(4)" alt="Pink Sunset">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="Photo 15.jpg" style="width:100%" onclick="currentSlide(5)" alt="Sunset in UiTM">
+    </div>    
+    <div class="column">
+      <img class="demo cursor" src="Photo 16.jpg" style="width:100%" onclick="currentSlide(6)" alt="Pink Sunset on Road pt 2">
+    </div>    
+  </div>
+</div> 
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("demo");
+  let captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script> 
+
+<center>
+<h2>Sunset Thumbnail Image</h2>
+<p>Click on the image to find more sunset image</p>
+
+<a target="_blank" href="https://www.google.com/search?sca_esv=823508c78d029fc5&rlz=1C1VDKB_enMY1043MY1043&q=sunset&udm=2&fbs=AIIjpHxU7SXXniUZfeShr2fp4giZ1Y6MJ25_tmWITc7uy4KIeioyp3OhN11EY0n5qfq-zEMZldv_eRjZ2XLYc5GnVnMEIxC4WQfoNDH7FwchyAayyomVtyMIlwCjX48LT0TrXSNU5mLhW4DIlZIt3-gwG8mMeXC-Y0JFzx5GBuU59za0o5XLXRovSVas40d3y4gTUxobLZ8-C-h3aNfCXmcENPvCZqzMdA&sa=X&ved=2ahUKEwiomNyxp_SNAxX6SGwGHQpGK18QtKgLegQIFBAB&biw=1280&bih=585&dpr=1.5">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9P4Lce_tyUYoFkthMB8-VnJA8RPctN7wc7A&s"" alt="Forest" style="width:150px">
+</a>
+</center>
+
+<br><br><br><br><br>
+    <center><h2 style="color:rgb(18, 18, 18);background-color: rgb(147, 156, 255);" class="city main,">My Favourite Scene In Movie</h2></center> 
+
+    <h2 style="text-align:center">The Marvels</h2>
+
+    <div style="text-align:center"> 
+  <button onclick="playPause()">Play/Pause</button> 
+  <button onclick="makeBig()">Big</button>
+  <button onclick="makeSmall()">Small</button>
+  <button onclick="makeNormal()">Normal</button>
+  <br><br>
+  <video id="video1" width="420">
+    <source src="c:\Users\Amirul\Downloads\Telegram Desktop\Video 1.mp4" type="video/mp4">
+    <source src="c:\Users\Amirul\Downloads\Telegram Desktop\Video 1.mp4" type="video/ogg">
+  </video>
+</div> 
+
+<script> 
+var myVideo = document.getElementById("video1"); 
+
+function playPause() { 
+  if (myVideo.paused) 
+    myVideo.play(); 
+  else 
+    myVideo.pause(); 
+} 
+
+function makeBig() { 
+    myVideo.width = 560; 
+} 
+
+function makeSmall() { 
+    myVideo.width = 320; 
+} 
+
+function makeNormal() { 
+    myVideo.width = 420; 
+} 
+</script> 
+
+<br><br><br><br><br>
+    <center><h2 style="color:rgb(18, 18, 18);background-color: rgb(166, 172, 234);" class="city main,">My Favourite Animal</h2></center> 
+
+     <h2 style="text-align:center">The Cats</h2> 
+
+     <div class="scroll-container">
+  <img src="https://www.catster.com/wp-content/uploads/2023/11/domestic-mackerel-tabby-cat-lying-on-a-chair-Ana-Iacob-Photography-Shutterstock.jpg" alt="Tabby Cat" width="700" height="400">
+  <img src="https://www.petful.com/wp-content/uploads/2018/04/12473529633_7f151ff3cb_c.jpg" alt="Calico Cat" width="600" height="400">
+  <img src="https://i0.wp.com/mycatlikes.com/wp-content/uploads/2024/03/golden_british_shorthair_cat.jpg?fit=1024%2C683&ssl=1&w=640" alt="Golden British Short Hair Cat" width="600" height="400">
+  <img src="https://www.dailypaws.com/thmb/jWEgvA8y6RtfNY2SIspJdqdcxWo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/american-shorthair-lying-down-with-toy-285804372-2000-b0ef591e3d0a4e4f9d092931d31ae31f.jpg" alt="American Short Hair Cat" width="600" height="400">
+</div>
+
+
+<br><br><br><br><br>
+    <center><h2 style="color:rgb(18, 18, 18);background-color: rgb(166, 172, 234);" class="city main,">My Favourite Music Video</h2></center> 
+
+    <center>
+   <iframe width="400" height="345" src="https://www.youtube.com/embed/sL0pCS6K9bc?si=2B-ooJ62dK0ZRch-" title="YouTube video player">
+</iframe>
+<iframe width="400" height="345" src="https://www.youtube.com/embed/TwfOTaEVt_w?si=cfGQQ9QdT_dC7UR0" title="YouTube video player">
+</iframe>
+<iframe width="400" height="345" src="https://www.youtube.com/embed/a2Zqdo9RbNs?si=IJy9yoe66KSjbYkU" title="YouTube video player" title="YouTube video player">
+</iframe>
+</center>
+
+
+<a href="C:\Users\Amirul\Desktop\IMD318 Assignnotes\HTML Assignment 1\index.html" class="previous">&laquo; Back to Home</a> 
+
+
+
+
+     </body>
+     </html> 
